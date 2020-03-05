@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+
+{% block css %}
+    <style>
+        .permission-area tr.parent {
+            background-color: #cae7fd;;
+        }
+
+        .menu-body tr.active {
+            background-color: #f1f7fd;
+            border-left: 3px solid #fdc00f;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div style="margin: 20px">
+        <div class="">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><i class="fa fa-book"></i> 分数排名管理
+
+
+
+
+
+                    <form action="" class="pull-right" method="post">
+                        {% csrf_token %}
+                        <input type="text" style="padding: 2px 8px;margin: -3px;" placeholder="0-10" name="query">
+                        <input type="submit" class="btn btn-success btn-sm  "
+                       style="padding: 2px 8px;margin: -3px;margin-left: 1px; margin-bottom: 0.5px" value="查看排名">
+                    </form>
+
+                </div>
+
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>客户端</th>
+                        <th>分数</th>
+                    </tr>
+                    </thead>
+                    <tbody class="menu-body">
+                    {% for key, values in score_dict.all_score.items %}
+                        <tr class="">
+                            <td>{{ key }}</td>
+                            <td>{{ values.name }}</td>
+                            <td>{{ values.score }}</td>
+                        </tr>
+                    {% endfor %}
+                    {% load be_int %}
+                    <tr>
+                        <td>{{ score_dict.curr.rank }}</td>
+                        <td>{{ score_dict.curr.name }}</td>
+                        <td>{{ score_dict.curr.score|be_int }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
