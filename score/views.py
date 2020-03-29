@@ -11,7 +11,9 @@ from score import tools
 
 CONN = redis.Redis(connection_pool=POOL)
 
-
+"""
+这是新的讯息
+"""
 def reg(request):
     form_obj = RegForm()
     if request.method == 'POST':
