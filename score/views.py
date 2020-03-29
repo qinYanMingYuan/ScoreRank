@@ -12,7 +12,7 @@ from score import tools
 CONN = redis.Redis(connection_pool=POOL)
 
 """
-这是新的讯息
+这是新的讯hhhhhhhh息
 """
 def reg(request):
     form_obj = RegForm()
